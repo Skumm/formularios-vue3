@@ -13,7 +13,16 @@
       <h3>Extras</h3>
       <div>
         <BaseCheckbox v-model="event.extras.catering" label="Catering" />
+      </div>
+      <div>
         <BaseCheckbox v-model="event.extras.music" label="Musica" />
+      </div>
+      <h3>¿Se permiten mascotas?</h3>
+      <div>
+        <BaseRadio v-model="event.pets" name="mascotas" :value="1" label="Si" />
+      </div>
+      <div>
+        <BaseRadio v-model="event.pets" name="mascotas" :value="0" label="No" />
       </div>
     </form>
   </div>
@@ -23,9 +32,10 @@
 import BaseInput from "@/components/BaseInput";
 import BaseSelect from "@/components/BaseSelect";
 import BaseCheckbox from "@/components/BaseCheckbox";
+import BaseRadio from "@/components/BaseRadio";
 export default {
   name: "BasicForm",
-  components: {BaseCheckbox, BaseSelect, BaseInput },
+  components: { BaseRadio, BaseCheckbox, BaseSelect, BaseInput },
   data() {
     return {
       categories: [
