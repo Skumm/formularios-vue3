@@ -19,10 +19,11 @@
       </div>
       <h3>¿Se permiten mascotas?</h3>
       <div>
-        <BaseRadio v-model="event.pets" name="mascotas" :value="1" label="Si" />
-      </div>
-      <div>
-        <BaseRadio v-model="event.pets" name="mascotas" :value="0" label="No" />
+        <BaseRadioGroup
+          v-model="event.pets"
+          name="mascotas"
+          :options="petOptions"
+        />
       </div>
     </form>
   </div>
@@ -32,10 +33,15 @@
 import BaseInput from "@/components/BaseInput";
 import BaseSelect from "@/components/BaseSelect";
 import BaseCheckbox from "@/components/BaseCheckbox";
-import BaseRadio from "@/components/BaseRadio";
+import BaseRadioGroup from "@/components/BaseRadioGroup";
 export default {
   name: "BasicForm",
-  components: { BaseRadio, BaseCheckbox, BaseSelect, BaseInput },
+  components: {
+    BaseRadioGroup,
+    BaseCheckbox,
+    BaseSelect,
+    BaseInput,
+  },
   data() {
     return {
       categories: [
@@ -58,6 +64,10 @@ export default {
           music: false,
         },
       },
+      petOptions: [
+        { label: "Yes", value: 1 },
+        { label: "No", value: 0 },
+      ],
     };
   },
 };
