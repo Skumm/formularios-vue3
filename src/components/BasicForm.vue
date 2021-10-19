@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Formulario Basico</h1>
-    <form>
+    <form @submit.prevent="enviarFormulario">
       <BaseSelect
         v-model="event.categories"
         :options="categories"
@@ -25,7 +25,9 @@
           :options="petOptions"
         />
       </div>
+      <button type="submit">Enviar</button>
     </form>
+    <pre>{{ event }}</pre>
   </div>
 </template>
 
@@ -34,6 +36,7 @@ import BaseInput from "@/components/BaseInput";
 import BaseSelect from "@/components/BaseSelect";
 import BaseCheckbox from "@/components/BaseCheckbox";
 import BaseRadioGroup from "@/components/BaseRadioGroup";
+//import axios from "axios";
 export default {
   name: "BasicForm",
   components: {
@@ -68,6 +71,10 @@ export default {
         { label: "Yes", value: 1 },
         { label: "No", value: 0 },
       ],
+      methods: {
+        enviarFormulario() {
+        }
+      },
     };
   },
 };
