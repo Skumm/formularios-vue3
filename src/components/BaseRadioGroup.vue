@@ -11,7 +11,7 @@
       :value="option.value"
       :name="name"
       :modelValue="modelValue"
-      @change="$emit('update:modelValue', $event)"
+      @update:modelValue="$emit('update:modelValue', $event)"
     />
   </component>
 </template>

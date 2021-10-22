@@ -6,7 +6,7 @@
 
 <script>
 // @ is an alias to /src
-import BasicForm from "../components/BasicForm";
+import BasicForm from "./BasicForm";
 
 export default {
   name: "Home",

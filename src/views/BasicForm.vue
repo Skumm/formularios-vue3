@@ -36,7 +36,7 @@ import BaseInput from "@/components/BaseInput";
 import BaseSelect from "@/components/BaseSelect";
 import BaseCheckbox from "@/components/BaseCheckbox";
 import BaseRadioGroup from "@/components/BaseRadioGroup";
-//import axios from "axios";
+import axios from "axios";
 export default {
   name: "BasicForm",
   components: {
@@ -71,11 +71,22 @@ export default {
         { label: "Yes", value: 1 },
         { label: "No", value: 0 },
       ],
-      methods: {
-        enviarFormulario() {
-        }
-      },
     };
+  },
+  methods: {
+    enviarFormulario() {
+      axios
+        .post(
+          "https://my-json-server.typicode.com/Skumm/formularios-vue3/events",
+          this.event
+        )
+        .then((response) => {
+          console.log("Los datos han sido enviados", response);
+        })
+        .catch((error) => {
+          console.log("ha ocurrido un error", error);
+        });
+    },
   },
 };
 </script>
