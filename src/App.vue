@@ -1,6 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
+    <router-link to="/login">Login</router-link>
   </div>
   <router-view />
 </template>
@@ -190,6 +191,7 @@ textarea {
   -webkit-appearance: none;
 }
 [type="text"],
+[type="email"],
 [type="number"],
 [type="search"],
 [type="password"] {
@@ -199,6 +201,7 @@ textarea {
   font-size: 20px;
 }
 [type="text"]:focus,
+[type="email"]:focus,
 [type="number"]:focus,
 [type="search"]:focus,
 [type="password"]:focus {
