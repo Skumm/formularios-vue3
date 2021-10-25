@@ -19,6 +19,7 @@
       {{ option }}
     </option>
   </select>
+  <p v-if="error" :class="error ? 'error' : ''">{{ error }}</p>
 </template>
 
 <script>
@@ -36,8 +37,19 @@ export default {
       type: Array,
       required: true,
     },
+    error: {
+      type: String,
+      default: ""
+    }
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 0;
+  border: 0;
+}
+</style>
