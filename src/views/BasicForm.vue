@@ -58,6 +58,7 @@ import BaseCheckbox from "@/components/BaseCheckbox";
 import BaseRadioGroup from "@/components/BaseRadioGroup";
 //import axios from "axios";
 import { useField, useForm } from "vee-validate";
+import { object, string, boolean, number } from "yup";
 export default {
   name: "BasicForm",
   components: {
@@ -110,35 +111,14 @@ export default {
     },*/
   },
   setup() {
-    const required = (value) => {
-      const obligatorio = "Este es un campo obligatorio";
-      if (value === undefined || value === null) return obligatorio;
-      if (!String(value).length) return obligatorio;
-      return true;
-    };
-    const minLength = (number, value) => {
-      if (String(value).length < number)
-        return `El mínimo de caracteres es ${number}`;
-      return true;
-    };
-    const anything = () => {
-      return true;
-    };
-    const validationSchema = {
-      category: required,
-      title: (value) => {
-        const req = required(value);
-        if (req !== true) return req;
-        const min = minLength(3, value);
-        if (min !== true) return min;
-        return true;
-      },
-      description: required,
-      location: undefined,
-      pets: anything,
-      catering: anything,
-      music: anything,
-    };
+    const validationSchema = object({
+      category: string().required(),
+      title: string().required("El título es obligatorio").min(3),
+      description: string().required(),
+      pets: number(),
+      music: boolean(),
+      catering: boolean(),
+    });
     const { handleSubmit, errors } = useForm({
       validationSchema,
       initialValues: {
